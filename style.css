@@ -1,0 +1,42 @@
+html {
+  background-color: rgb(249, 196, 105);
+}
+body {
+  margin: 10px 15%;
+  padding: 2% 1%;
+  width: 70%;
+  background-color: white;
+  border-radius: 1%;
+  box-shadow: 12px 12px 12px grey;
+}
+
+div.board {
+  width: 45%;
+  margin-left: 6%;
+  padding: 10px;
+  height: 610px;
+  background: url("https://st.hzcdn.com/simgs/2e21a38a0655ed73_4-5711/home-design.jpg");
+  border-radius: 3%;
+  box-shadow: 8px 8px 5px lightgray;
+}
+
+div.row {
+  opacity: 0.5;
+  padding: 0px;
+}
+
+div.code{
+  display: inline-block;
+  opacity: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: skyblue;
+}
+div.code > img{
+  opacity: 0.5;
+}
+
+div.balls{
+  margin-top: 20px;
+  margin-left: 8%;
+}
