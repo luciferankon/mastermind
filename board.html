@@ -79,11 +79,11 @@
         <img src="images/hole.png" alt="hole" />
       </div>
       <div class="row" style="opacity: 1;">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
+        <img src="images/hole.png" alt="hole" class="active"/>
+        <img src="images/hole.png" alt="hole" class="active"/>
+        <img src="images/hole.png" alt="hole" class="active"/>
+        <img src="images/hole.png" alt="hole" class="active"/>
+        <img src="images/hole.png" alt="hole" class="active"/>
       </div>
     </div>
     <div class="code_pegs">
@@ -99,17 +99,27 @@
 
     <script type="text/javascript">
       const resetAll = function() {
-        code_pegs.forEach(code_peg => (code_peg.style.opacity = 1));
+        codePegs.forEach(codePeg => (codePeg.style.opacity = 1));
       };
 
-      const code_pegs = getElementsByClassName("code_peg");
-      code_pegs.forEach(
-        code_peg =>
-          (code_peg.onclick = function() {
+      const codePegs = getElementsByClassName("code_peg");
+      let selectedCodePeg;
+
+      codePegs.forEach(
+        codePeg =>
+          (codePeg.onclick = function() {
             resetAll();
             this.style.opacity = 0.3;
+            selectedCodePeg = this;
           })
       );
+      
+      const activeHoles = getElementsByClassName('active');
+      activeHoles.forEach(hole => hole.onclick = function(){
+        this.src = selectedCodePeg.src;
+        selectedCodePeg = null;
+        resetAll();
+      })
     </script>
   </body>
 </html>
