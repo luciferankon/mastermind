@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <script src="javascript/utils.js" type="text/javascript"></script>
+  <script src="javascript/game.js" type="text/javascript"></script>
   <body>
     <div class="board">
       <div class="row code">
@@ -79,47 +80,54 @@
         <img src="images/hole.png" alt="hole" />
       </div>
       <div class="row" style="opacity: 1;">
-        <img src="images/hole.png" alt="hole" class="active"/>
-        <img src="images/hole.png" alt="hole" class="active"/>
-        <img src="images/hole.png" alt="hole" class="active"/>
-        <img src="images/hole.png" alt="hole" class="active"/>
-        <img src="images/hole.png" alt="hole" class="active"/>
+        <img src="images/hole.png" alt="hole" class="active" />
+        <img src="images/hole.png" alt="hole" class="active" />
+        <img src="images/hole.png" alt="hole" class="active" />
+        <img src="images/hole.png" alt="hole" class="active" />
+        <img src="images/hole.png" alt="hole" class="active" />
       </div>
     </div>
     <div class="code_pegs">
       <img src="images/red_code_peg.png" alt="red_code_peg" class="code_peg" />
-      <img src="images/blue_code_peg.png" alt="blue_code_peg" class="code_peg" />
-      <img src="images/pink_code_peg.png" alt="pink_code_peg" class="code_peg" />
-      <img src="images/sky_blue_code_peg.png" alt="sky_blue_code_peg" class="code_peg" />
-      <img src="images/purple_code_peg.png" alt="purple_code_peg" class="code_peg" />
-      <img src="images/yellow_code_peg.png" alt="yellow_code_peg" class="code_peg" />
-      <img src="images/green_code_peg.png" alt="green_code_peg" class="code_peg" />
-      <img src="images/orange_code_peg.png" alt="orange_code_peg" class="code_peg" />
+      <img
+        src="images/blue_code_peg.png"
+        alt="blue_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/pink_code_peg.png"
+        alt="pink_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/sky_blue_code_peg.png"
+        alt="sky_blue_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/purple_code_peg.png"
+        alt="purple_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/yellow_code_peg.png"
+        alt="yellow_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/green_code_peg.png"
+        alt="green_code_peg"
+        class="code_peg"
+      />
+      <img
+        src="images/orange_code_peg.png"
+        alt="orange_code_peg"
+        class="code_peg"
+      />
     </div>
 
     <script type="text/javascript">
-      const resetAll = function() {
-        codePegs.forEach(codePeg => (codePeg.style.opacity = 1));
-      };
-
-      const codePegs = getElementsByClassName("code_peg");
-      let selectedCodePeg;
-
-      codePegs.forEach(
-        codePeg =>
-          (codePeg.onclick = function() {
-            resetAll();
-            this.style.opacity = 0.3;
-            selectedCodePeg = this;
-          })
-      );
-      
-      const activeHoles = getElementsByClassName('active');
-      activeHoles.forEach(hole => hole.onclick = function(){
-        this.src = selectedCodePeg.src;
-        selectedCodePeg = null;
-        resetAll();
-      })
+      startGame();
     </script>
   </body>
 </html>
