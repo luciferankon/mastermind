@@ -1,5 +1,6 @@
 let selectedCodePeg;
 const actualCode = ["red", "blue", "pink", "sky_blue", "purple"];
+let currentRowNumber = 1;
 
 const resetAllPegs = function(codePegs) {
   codePegs.forEach(codePeg => (codePeg.style.opacity = 1));
@@ -31,13 +32,30 @@ const getUserCode = function(activeHoles) {
   return userCode;
 };
 
+const unsetOnClicks = function(currentRowNumber) {
+  getActiveHoles(currentRowNumber).forEach(
+    activeHole => (activeHole.onclick = "")
+  );
+};
+
 const setNextRowActive = function() {
-  document.getElementById("row1").className = "inactive";
-  document.getElementById("row2").removeAttribute("class");
+  unsetOnClicks(currentRowNumber);
+  document.getElementById(`row${currentRowNumber}`).className = "inactive";
+  document
+    .getElementById(`row${currentRowNumber + 1}`)
+    .removeAttribute("class");
+  currentRowNumber++;
+  document.getElementById(
+    `feedback${currentRowNumber}`
+  ).innerHTML = `<button id="check${currentRowNumber}" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>`;
+
+  startGame();
 };
 
 const show = function(feedback) {
-  document.getElementById("feedback").innerHTML = `<img src="images/${feedback[0]}_peg.png" />
+  document.getElementById(
+    `feedback${currentRowNumber}`
+  ).innerHTML = `<img src="images/${feedback[0]}_peg.png" />
   <img src="images/${feedback[1]}_peg.png" />
   <img src="images/${feedback[2]}_peg.png" />
   <img src="images/${feedback[3]}_peg.png" />
@@ -66,10 +84,14 @@ const updateBoard = function(activeHoles, actualCode) {
   setNextRowActive();
 };
 
+const getActiveHoles = function(currentRowNumber) {
+  return document.querySelectorAll(`#row${currentRowNumber} > img`);
+};
+
 const startGame = function() {
   const codePegs = document.querySelectorAll(".code_peg");
-  const activeHoles = document.querySelectorAll("#row1 > img");
-  const checkBtn = document.getElementById("check");
+  const activeHoles = getActiveHoles(currentRowNumber);
+  const checkBtn = document.getElementById(`check${currentRowNumber}`);
 
   const onClickCodePeg = onClick.bind(codePegs, codePegs, select);
   const onClickHoles = onClick.bind(codePegs, activeHoles, place);
