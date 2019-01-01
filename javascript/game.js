@@ -75,7 +75,7 @@ const getFeeback = function(activeHoles, actualCode) {
       feedback[index] = "black";
     }
   }
-  return feedback;
+  return shuffle(feedback);
 };
 
 const updateBoard = function(activeHoles, actualCode) {
