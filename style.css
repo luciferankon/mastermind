@@ -21,31 +21,22 @@ div.board {
 }
 
 div.row {
-  opacity: 0.5;
-  padding: 0px;
-  
-}
-
-div.active{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 65px;
-  opacity: 1;
+  padding: 0px;
+  justify-content: space-between	
 }
 
 div.code {
-  display: inline-block;
-  opacity: 1;
   border: 1px solid black;
   border-radius: 10px;
   background: skyblue;
-}
-div.code > img {
-  opacity: 0.5;
 }
 
 div.code_pegs {
   margin-top: 20px;
   margin-left: 8%;
+}
+
+.inactive{
+  opacity: 0.5;
 }

@@ -6,81 +6,20 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <script src="javascript/game.js" type="text/javascript"></script>
+  <script src="javascript/arrayUtils.js" type="text/javascript"></script>
   <body>
     <div class="board">
-      <div class="row code">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
+      <div class="row">
+        <div class="code inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
       </div>
       <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      <div class="row">
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-        <img src="images/hole.png" alt="hole" />
-      </div>
-      
-      <div class = "active row">
-        <div>
+        <div class="inactive">
           <img src="images/hole.png" alt="hole" />
           <img src="images/hole.png" alt="hole" />
           <img src="images/hole.png" alt="hole" />
@@ -88,48 +27,167 @@
           <img src="images/hole.png" alt="hole" />
         </div>
         <div>
-          <button style="font-size: 16px;">
-            check
-          </button>
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+        
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+      
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive">
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+        
+        </div>
+      </div>
+      <div class="row">
+        <div class="inactive" id='row2'>
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+     
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="row1">
+          <img src="images/hole.png" alt="hole" data-color="no-color" />
+          <img src="images/hole.png" alt="hole" data-color="no-color" />
+          <img src="images/hole.png" alt="hole" data-color="no-color" />
+          <img src="images/hole.png" alt="hole" data-color="no-color" />
+          <img src="images/hole.png" alt="hole" data-color="no-color" />
+        </div>
+        <div id="feedback">
+          <button id="check" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>
         </div>
       </div>
     </div>
     <div class="code_pegs">
-      <img src="images/red_code_peg.png" alt="red_code_peg" class="code_peg" />
+      <img
+        src="images/red_code_peg.png"
+        alt="red_code_peg"
+        class="code_peg"
+        data-color="red"
+      />
       <img
         src="images/blue_code_peg.png"
         alt="blue_code_peg"
         class="code_peg"
+        data-color="blue"
       />
       <img
         src="images/pink_code_peg.png"
         alt="pink_code_peg"
         class="code_peg"
+        data-color="pink"
       />
       <img
         src="images/sky_blue_code_peg.png"
         alt="sky_blue_code_peg"
         class="code_peg"
+        data-color="sky_blue"
       />
       <img
         src="images/purple_code_peg.png"
         alt="purple_code_peg"
         class="code_peg"
+        data-color="purple"
       />
       <img
         src="images/yellow_code_peg.png"
         alt="yellow_code_peg"
         class="code_peg"
+        data-color="yellow"
       />
       <img
         src="images/green_code_peg.png"
         alt="green_code_peg"
         class="code_peg"
+        data-color="green"
       />
       <img
         src="images/orange_code_peg.png"
         alt="orange_code_peg"
         class="code_peg"
+        data-color="orange"
       />
     </div>
 
