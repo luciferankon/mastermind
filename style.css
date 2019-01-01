@@ -23,7 +23,7 @@ div.board {
 div.row {
   display: flex;
   padding: 0px;
-  justify-content: space-between	
+  justify-content: space-between 
 }
 
 div.code {

@@ -79,10 +79,10 @@ const generateFeedbackHTML = function(feedback) {
   return feedbackHTML;
 };
 
-const show = function(feedback) {
+const show = function(html) {
   document.getElementById(
     `feedback${currentRowNumber}`
-  ).innerHTML = generateFeedbackHTML(feedback);
+  ).innerHTML = html;
 };
 
 const getFeeback = function(activeHoles, actualCode) {
@@ -101,9 +101,29 @@ const getFeeback = function(activeHoles, actualCode) {
   return shuffle(feedback);
 };
 
+const generateMessageHTML = function(message){
+  return `<p style="font-size: 18px; font-weight: 900;margin-right: 35px;">${message}</p>`
+}
+
+const hasLost= function(){
+  return currentRowNumber===10;
+}
+const hasWon = function(feedback){
+  return feedback.every(keyPeg => keyPeg==='black');
+}
+
 const updateBoard = function(activeHoles, actualCode) {
   const feedback = getFeeback(activeHoles, actualCode);
-  show(feedback);
+  if(hasWon(feedback)){
+    show(generateMessageHTML("Code Cracked"));
+    return;
+  }
+
+  if(hasLost()){
+    show(generateMessageHTML('Try Again!'));
+    return;
+  }
+  show(generateFeedbackHTML(feedback));
   setNextRowActive();
 };
 
