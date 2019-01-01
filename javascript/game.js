@@ -11,22 +11,25 @@ const select = function(codePegs) {
 };
 
 const place = function(codePegs) {
+  console.log(codePegs);
   this.src = selectedCodePeg.src;
   selectedCodePeg = null;
   resetAllPegs(codePegs);
+  console.log(selectedCodePeg);
+};
+
+const onClick = function(elements,operation) {
+  elements.forEach(element => {
+    const performOperation = operation.bind(element, this);
+    element.onclick = performOperation;
+  });
 };
 
 const startGame = function() {
   const codePegs = getElementsByClassName("code_peg");
   const activeHoles = getElementsByClassName("active");
-
-  codePegs.forEach(codePeg => {
-    const selectCodePeg = select.bind(codePeg, codePegs);
-    codePeg.onclick = selectCodePeg;
-  });
-
-  activeHoles.forEach(hole => {
-    const placeCodePeg = place.bind(hole, codePegs);
-    hole.onclick = placeCodePeg;
-  });
+  const onClickCodePeg = onClick.bind(codePegs,codePegs,select);
+  const onClickHoles = onClick.bind(codePegs,activeHoles,place);
+  onClickCodePeg();
+  onClickHoles();
 };
