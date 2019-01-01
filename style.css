@@ -12,10 +12,10 @@ body {
 
 div.board {
   width: 45%;
-  margin-left: 6%;
+  /* margin-left: 6%; */
   padding: 10px;
   height: 610px;
-  background: url("https://st.hzcdn.com/simgs/2e21a38a0655ed73_4-5711/home-design.jpg");
+  background: url('https://st.hzcdn.com/simgs/2e21a38a0655ed73_4-5711/home-design.jpg');
   border-radius: 3%;
   box-shadow: 8px 8px 5px lightgray;
 }
@@ -23,7 +23,7 @@ div.board {
 div.row {
   display: flex;
   padding: 0px;
-  justify-content: space-between 
+  justify-content: space-between;
 }
 
 div.code {
@@ -37,6 +37,39 @@ div.code_pegs {
   margin-left: 8%;
 }
 
-.inactive{
+.inactive {
   opacity: 0.5;
+}
+
+.check_btn {
+  font-size: 16px;
+  margin-right: 60px;
+  margin-top: 14px;
+}
+
+.instruction_heading {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.instruction_image {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.instruction_text {
+  font-size: 18px;
+}
+
+.main_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.instruction_container{
+  width: 300px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 7px;
 }

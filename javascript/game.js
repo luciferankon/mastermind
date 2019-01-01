@@ -17,6 +17,8 @@ const select = function(codePegs) {
 
 const place = function(codePegs) {
   this.src = selectedCodePeg.src;
+  this.style = selectedCodePeg.style;
+  this.style.width = '50px';
   this.dataset.color = selectedCodePeg.dataset.color;
   selectedCodePeg = null;
   resetAllPegs(codePegs);
@@ -42,7 +44,7 @@ const unsetOnClicks = function(currentRowNumber) {
 };
 
 const createCheckButton = function(currentRowNumber) {
-  const buttonHTML = `<button id="check${currentRowNumber}" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>`;
+  const buttonHTML = `<button id="check${currentRowNumber}" class="check_btn">check</button>`;
   document.getElementById(`feedback${currentRowNumber}`).innerHTML = buttonHTML;
 };
 
