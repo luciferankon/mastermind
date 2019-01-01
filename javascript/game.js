@@ -80,9 +80,7 @@ const generateFeedbackHTML = function(feedback) {
 };
 
 const show = function(html) {
-  document.getElementById(
-    `feedback${currentRowNumber}`
-  ).innerHTML = html;
+  document.getElementById(`feedback${currentRowNumber}`).innerHTML = html;
 };
 
 const getFeeback = function(activeHoles, actualCode) {
@@ -101,25 +99,36 @@ const getFeeback = function(activeHoles, actualCode) {
   return shuffle(feedback);
 };
 
-const generateMessageHTML = function(message){
-  return `<p style="font-size: 18px; font-weight: 900;margin-right: 35px;">${message}</p>`
-}
+const generateMessageHTML = function(message) {
+  return `<p style="font-size: 18px; font-weight: 900;margin-right: 35px;">${message}</p>`;
+};
 
-const hasLost= function(){
-  return currentRowNumber===10;
-}
-const hasWon = function(feedback){
-  return feedback.every(keyPeg => keyPeg==='black');
-}
+const hasLost = function() {
+  return currentRowNumber === 10;
+};
+
+const hasWon = function(feedback) {
+  return feedback.every(keyPeg => keyPeg === 'black');
+};
+
+const isAnyHoleEmpty = function(activeHoles) {
+  const userCode = getUserCode(activeHoles);
+  return userCode.some(codePegColor => codePegColor === 'no-color');
+};
 
 const updateBoard = function(activeHoles, actualCode) {
-  const feedback = getFeeback(activeHoles, actualCode);
-  if(hasWon(feedback)){
-    show(generateMessageHTML("Code Cracked"));
+  if (isAnyHoleEmpty(activeHoles)) {
+    alert('Please put all code pegs before checking!');
     return;
   }
 
-  if(hasLost()){
+  const feedback = getFeeback(activeHoles, actualCode);
+  if (hasWon(feedback)) {
+    show(generateMessageHTML('Code Cracked'));
+    return;
+  }
+
+  if (hasLost()) {
     show(generateMessageHTML('Try Again!'));
     return;
   }

@@ -3,5 +3,4 @@ switch code pegs in active row
 add transition effect
 show messages
 show rules and instruction
-if user lose show that message also
 at last show the code in the last row
