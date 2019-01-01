@@ -5,7 +5,6 @@
     <title>Mastermind</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <script src="javascript/utils.js" type="text/javascript"></script>
   <script src="javascript/game.js" type="text/javascript"></script>
   <body>
     <div class="board">
@@ -79,12 +78,20 @@
         <img src="images/hole.png" alt="hole" />
         <img src="images/hole.png" alt="hole" />
       </div>
-      <div class="row" style="opacity: 1;">
-        <img src="images/hole.png" alt="hole" class="active" />
-        <img src="images/hole.png" alt="hole" class="active" />
-        <img src="images/hole.png" alt="hole" class="active" />
-        <img src="images/hole.png" alt="hole" class="active" />
-        <img src="images/hole.png" alt="hole" class="active" />
+      
+      <div class = "active row">
+        <div>
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+          <img src="images/hole.png" alt="hole" />
+        </div>
+        <div>
+          <button style="font-size: 16px;">
+            check
+          </button>
+        </div>
       </div>
     </div>
     <div class="code_pegs">

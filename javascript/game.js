@@ -26,8 +26,8 @@ const onClick = function(elements,operation) {
 };
 
 const startGame = function() {
-  const codePegs = getElementsByClassName("code_peg");
-  const activeHoles = getElementsByClassName("active");
+  const codePegs = document.querySelectorAll(".code_peg");
+  const activeHoles = document.querySelectorAll(".active img");
   const onClickCodePeg = onClick.bind(codePegs,codePegs,select);
   const onClickHoles = onClick.bind(codePegs,activeHoles,place);
   onClickCodePeg();
