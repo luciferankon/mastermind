@@ -31,17 +31,18 @@ const getUserCode = function(activeHoles) {
   return userCode;
 };
 
-const showFeedback = function(feedback){
+const setNextRowActive = function() {
+  document.getElementById("row1").className = "inactive";
+  document.getElementById("row2").removeAttribute("class");
+};
+
+const show = function(feedback) {
   document.getElementById("feedback").innerHTML = `<img src="images/${feedback[0]}_peg.png" />
   <img src="images/${feedback[1]}_peg.png" />
   <img src="images/${feedback[2]}_peg.png" />
   <img src="images/${feedback[3]}_peg.png" />
   <img src="images/${feedback[4]}_peg.png" />`;
-
-  document.getElementById('row1').className='inactive';
-  
-  document.getElementById('row2').removeAttribute('class');
-}
+};
 
 const getFeeback = function(activeHoles, actualCode) {
   const userCode = getUserCode(activeHoles);
@@ -56,17 +57,23 @@ const getFeeback = function(activeHoles, actualCode) {
       feedback[index] = "black";
     }
   }
-  showFeedback(feedback);
+  return feedback;
+};
+
+const updateBoard = function(activeHoles, actualCode) {
+  const feedback = getFeeback(activeHoles, actualCode);
+  show(feedback);
+  setNextRowActive();
 };
 
 const startGame = function() {
   const codePegs = document.querySelectorAll(".code_peg");
   const activeHoles = document.querySelectorAll("#row1 > img");
   const checkBtn = document.getElementById("check");
-  
+
   const onClickCodePeg = onClick.bind(codePegs, codePegs, select);
   const onClickHoles = onClick.bind(codePegs, activeHoles, place);
   onClickCodePeg();
   onClickHoles();
-  checkBtn.onclick = getFeeback.bind(null, activeHoles, actualCode);
+  checkBtn.onclick = updateBoard.bind(null, activeHoles, actualCode);
 };
