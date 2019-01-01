@@ -17,8 +17,6 @@ const select = function(codePegs) {
 
 const place = function(codePegs) {
   this.src = selectedCodePeg.src;
-  this.style = selectedCodePeg.style;
-  this.style.width = '50px';
   this.dataset.color = selectedCodePeg.dataset.color;
   selectedCodePeg = null;
   resetAllPegs(codePegs);
