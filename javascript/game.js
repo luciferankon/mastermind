@@ -44,7 +44,7 @@ const unsetOnClicks = function(currentRowNumber) {
 };
 
 const createCheckButton = function(currentRowNumber) {
-  const buttonHTML = `<button id="check${currentRowNumber}" class="check_btn">check</button>`;
+  const buttonHTML = `<button id="check${currentRowNumber}" class="check_btn">CHECK</button>`;
   document.getElementById(`feedback${currentRowNumber}`).innerHTML = buttonHTML;
 };
 

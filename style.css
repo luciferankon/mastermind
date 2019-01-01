@@ -38,13 +38,15 @@ div.code_pegs {
 }
 
 .inactive {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .check_btn {
   font-size: 16px;
   margin-right: 60px;
   margin-top: 14px;
+  padding: 3px 12px;
+  border-radius: 5px;
 }
 
 .instruction_heading {
@@ -67,10 +69,17 @@ div.code_pegs {
   align-items: center;
 }
 
-.instruction_container{
+.instruction_container {
   width: 300px;
-  border: 2px solid deepskyblue;
+  border: 1px solid lightgrey;
+  background-color: rgb(249, 249, 249);
+  box-shadow: 3px 4px 4px grey;
   padding: 20px;
   margin-left: 30px;
   border-radius: 7px;
+}
+
+.logo {
+  width: 400px;
+  margin-bottom: 80px;
 }
