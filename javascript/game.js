@@ -66,6 +66,7 @@ const generateFeedbackHTML = function(feedback) {
 };
 
 const show = function(html,currentRowNumber) {
+  console.log(currentRowNumber);
   document.getElementById(`feedback${currentRowNumber}`).innerHTML = html;
 };
 
@@ -124,7 +125,7 @@ const updateBoard = function(activeHoles, actualCode, currentRowNumber) {
   }
 
   if (hasLost(currentRowNumber)) {
-    show(generateMessageHTML('Try Again!',currentRowNumber));
+    show(generateMessageHTML('Try Again!'),currentRowNumber);
     reveal(actualCode);
     return;
   }
