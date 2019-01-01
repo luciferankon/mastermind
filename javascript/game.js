@@ -116,6 +116,14 @@ const isAnyHoleEmpty = function(activeHoles) {
   return userCode.some(codePegColor => codePegColor === 'no-color');
 };
 
+const showActualCode = function() {
+  const actualCodePegs = document.querySelectorAll('#actual_code > img');
+  for (const index in actualCode) {
+    actualCodePegs[index].src = `images/${actualCode[index]}_code_peg.png`;
+  }
+  document.getElementById('actual_code').style.opacity=1;
+};
+
 const updateBoard = function(activeHoles, actualCode) {
   if (isAnyHoleEmpty(activeHoles)) {
     alert('Please put all code pegs before checking!');
@@ -125,11 +133,13 @@ const updateBoard = function(activeHoles, actualCode) {
   const feedback = getFeeback(activeHoles, actualCode);
   if (hasWon(feedback)) {
     show(generateMessageHTML('Code Cracked'));
+    showActualCode();
     return;
   }
 
   if (hasLost()) {
     show(generateMessageHTML('Try Again!'));
+    showActualCode();
     return;
   }
   show(generateFeedbackHTML(feedback));

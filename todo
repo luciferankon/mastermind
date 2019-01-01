@@ -1,4 +1,5 @@
 Rename argument 'html' in show()
+remove actual code from global -> make a function to start the game
 switch code pegs in active row
 add transition effect
 show messages
