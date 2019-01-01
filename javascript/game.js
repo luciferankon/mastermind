@@ -1,14 +1,15 @@
 let selectedCodePeg;
 const colors = [
-  "red",
-  "blue",
-  "pink",
-  "sky_blue",
-  "purple",
-  "green",
-  "yellow",
-  "orange"
+  'red',
+  'blue',
+  'pink',
+  'sky_blue',
+  'purple',
+  'green',
+  'yellow',
+  'orange'
 ];
+
 let currentRowNumber = 1;
 
 const generateCode = function(colors) {
@@ -50,44 +51,51 @@ const getUserCode = function(activeHoles) {
 
 const unsetOnClicks = function(currentRowNumber) {
   getActiveHoles(currentRowNumber).forEach(
-    activeHole => (activeHole.onclick = "")
+    activeHole => (activeHole.onclick = '')
   );
+};
+
+const createCheckButton = function() {
+  const buttonHTML = `<button id="check${currentRowNumber}" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>`;
+  document.getElementById(`feedback${currentRowNumber}`).innerHTML = buttonHTML;
 };
 
 const setNextRowActive = function() {
   unsetOnClicks(currentRowNumber);
-  document.getElementById(`row${currentRowNumber}`).className = "inactive";
+  document.getElementById(`row${currentRowNumber}`).className = 'inactive';
   document
     .getElementById(`row${currentRowNumber + 1}`)
-    .removeAttribute("class");
+    .removeAttribute('class');
   currentRowNumber++;
-  document.getElementById(
-    `feedback${currentRowNumber}`
-  ).innerHTML = `<button id="check${currentRowNumber}" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>`;
-
+  createCheckButton();
   startGame();
 };
 
+const generateFeedbackHTML = function(feedback) {
+  let feedbackHTML = '';
+  for (const keyPeg of feedback) {
+    feedbackHTML = feedbackHTML + `<img src="images/${keyPeg}_peg.png" />`;
+  }
+  return feedbackHTML;
+};
+
 const show = function(feedback) {
-  document.getElementById(`feedback${currentRowNumber}`).innerHTML = 
-  `<img src="images/${feedback[0]}_peg.png" />
-  <img src="images/${feedback[1]}_peg.png" />
-  <img src="images/${feedback[2]}_peg.png" />
-  <img src="images/${feedback[3]}_peg.png" />
-  <img src="images/${feedback[4]}_peg.png" />`;
+  document.getElementById(
+    `feedback${currentRowNumber}`
+  ).innerHTML = generateFeedbackHTML(feedback);
 };
 
 const getFeeback = function(activeHoles, actualCode) {
   const userCode = getUserCode(activeHoles);
-  const feedback = new Array(5).fill("empty");
+  const feedback = new Array(5).fill('empty');
 
   for (const index in userCode) {
     const currentUserPeg = userCode[index];
     if (actualCode.includes(currentUserPeg)) {
-      feedback[index] = "white";
+      feedback[index] = 'white';
     }
     if (currentUserPeg === actualCode[index]) {
-      feedback[index] = "black";
+      feedback[index] = 'black';
     }
   }
   return shuffle(feedback);
@@ -104,7 +112,7 @@ const getActiveHoles = function(currentRowNumber) {
 };
 
 const startGame = function() {
-  const codePegs = document.querySelectorAll(".code_peg");
+  const codePegs = document.querySelectorAll('.code_peg');
   const activeHoles = getActiveHoles(currentRowNumber);
   const checkBtn = document.getElementById(`check${currentRowNumber}`);
 
