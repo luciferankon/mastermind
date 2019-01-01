@@ -1,6 +1,22 @@
 let selectedCodePeg;
-const actualCode = ["red", "blue", "pink", "sky_blue", "purple"];
+const colors = [
+  "red",
+  "blue",
+  "pink",
+  "sky_blue",
+  "purple",
+  "green",
+  "yellow",
+  "orange"
+];
 let currentRowNumber = 1;
+
+const generateCode = function(colors) {
+  const shuffledColors = shuffle(colors);
+  return shuffledColors.slice(-5);
+};
+
+const actualCode = generateCode(colors);
 
 const resetAllPegs = function(codePegs) {
   codePegs.forEach(codePeg => (codePeg.style.opacity = 1));
@@ -53,9 +69,8 @@ const setNextRowActive = function() {
 };
 
 const show = function(feedback) {
-  document.getElementById(
-    `feedback${currentRowNumber}`
-  ).innerHTML = `<img src="images/${feedback[0]}_peg.png" />
+  document.getElementById(`feedback${currentRowNumber}`).innerHTML = 
+  `<img src="images/${feedback[0]}_peg.png" />
   <img src="images/${feedback[1]}_peg.png" />
   <img src="images/${feedback[2]}_peg.png" />
   <img src="images/${feedback[3]}_peg.png" />
@@ -93,6 +108,7 @@ const startGame = function() {
   const activeHoles = getActiveHoles(currentRowNumber);
   const checkBtn = document.getElementById(`check${currentRowNumber}`);
 
+  console.log(actualCode);
   const onClickCodePeg = onClick.bind(codePegs, codePegs, select);
   const onClickHoles = onClick.bind(codePegs, activeHoles, place);
   onClickCodePeg();
