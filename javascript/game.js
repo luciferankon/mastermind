@@ -1,23 +1,9 @@
 let selectedCodePeg;
-const colors = [
-  'red',
-  'blue',
-  'pink',
-  'sky_blue',
-  'purple',
-  'green',
-  'yellow',
-  'orange'
-];
-
-let currentRowNumber = 1;
 
 const generateCode = function(colors) {
   const shuffledColors = shuffle(colors);
   return shuffledColors.slice(-5);
 };
-
-const actualCode = generateCode(colors);
 
 const resetAllPegs = function(codePegs) {
   codePegs.forEach(codePeg => (codePeg.style.opacity = 1));
@@ -55,20 +41,20 @@ const unsetOnClicks = function(currentRowNumber) {
   );
 };
 
-const createCheckButton = function() {
+const createCheckButton = function(currentRowNumber) {
   const buttonHTML = `<button id="check${currentRowNumber}" style="font-size: 16px; margin-right: 60px; margin-top: 14px ">check</button>`;
   document.getElementById(`feedback${currentRowNumber}`).innerHTML = buttonHTML;
 };
 
-const setNextRowActive = function() {
+const setNextRowActive = function(currentRowNumber, actualCode) {
   unsetOnClicks(currentRowNumber);
   document.getElementById(`row${currentRowNumber}`).className = 'inactive';
   document
     .getElementById(`row${currentRowNumber + 1}`)
     .removeAttribute('class');
   currentRowNumber++;
-  createCheckButton();
-  startGame();
+  createCheckButton(currentRowNumber);
+  makeAttempt(actualCode,currentRowNumber);
 };
 
 const generateFeedbackHTML = function(feedback) {
@@ -79,7 +65,7 @@ const generateFeedbackHTML = function(feedback) {
   return feedbackHTML;
 };
 
-const show = function(html) {
+const show = function(html,currentRowNumber) {
   document.getElementById(`feedback${currentRowNumber}`).innerHTML = html;
 };
 
@@ -103,7 +89,7 @@ const generateMessageHTML = function(message) {
   return `<p style="font-size: 18px; font-weight: 900;margin-right: 35px;">${message}</p>`;
 };
 
-const hasLost = function() {
+const hasLost = function(currentRowNumber) {
   return currentRowNumber === 10;
 };
 
@@ -116,15 +102,15 @@ const isAnyHoleEmpty = function(activeHoles) {
   return userCode.some(codePegColor => codePegColor === 'no-color');
 };
 
-const showActualCode = function() {
+const reveal = function(actualCode) {
   const actualCodePegs = document.querySelectorAll('#actual_code > img');
   for (const index in actualCode) {
     actualCodePegs[index].src = `images/${actualCode[index]}_code_peg.png`;
   }
-  document.getElementById('actual_code').style.opacity=1;
+  document.getElementById('actual_code').style.opacity = 1;
 };
 
-const updateBoard = function(activeHoles, actualCode) {
+const updateBoard = function(activeHoles, actualCode, currentRowNumber) {
   if (isAnyHoleEmpty(activeHoles)) {
     alert('Please put all code pegs before checking!');
     return;
@@ -132,25 +118,25 @@ const updateBoard = function(activeHoles, actualCode) {
 
   const feedback = getFeeback(activeHoles, actualCode);
   if (hasWon(feedback)) {
-    show(generateMessageHTML('Code Cracked'));
-    showActualCode();
+    show(generateMessageHTML('Code Cracked'),currentRowNumber);
+    reveal(actualCode);
     return;
   }
 
-  if (hasLost()) {
-    show(generateMessageHTML('Try Again!'));
-    showActualCode();
+  if (hasLost(currentRowNumber)) {
+    show(generateMessageHTML('Try Again!',currentRowNumber));
+    reveal(actualCode);
     return;
   }
-  show(generateFeedbackHTML(feedback));
-  setNextRowActive();
+  show(generateFeedbackHTML(feedback),currentRowNumber);
+  setNextRowActive(currentRowNumber, actualCode);
 };
 
 const getActiveHoles = function(currentRowNumber) {
   return document.querySelectorAll(`#row${currentRowNumber} > img`);
 };
 
-const startGame = function() {
+const makeAttempt = function(actualCode, currentRowNumber) {
   const codePegs = document.querySelectorAll('.code_peg');
   const activeHoles = getActiveHoles(currentRowNumber);
   const checkBtn = document.getElementById(`check${currentRowNumber}`);
@@ -160,5 +146,20 @@ const startGame = function() {
   const onClickHoles = onClick.bind(codePegs, activeHoles, place);
   onClickCodePeg();
   onClickHoles();
-  checkBtn.onclick = updateBoard.bind(null, activeHoles, actualCode);
+  checkBtn.onclick = updateBoard.bind(null, activeHoles, actualCode,currentRowNumber);
+};
+
+const startGame = function() {
+  const colors = [
+    'red',
+    'blue',
+    'pink',
+    'sky_blue',
+    'purple',
+    'green',
+    'yellow',
+    'orange'
+  ];
+  const actualCode = generateCode(colors);
+  makeAttempt(actualCode, 1);
 };
